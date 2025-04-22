@@ -4,7 +4,7 @@ type GameInfoProps = {
   board: string[][]
   gridSize: number
   lastPlayer: 'X' | '0'
-  onWin: (winner: 'X' | '0') => void
+  onWin: (winner: 'X' | '0' | null) => void
   setGameOver: (value: boolean) => void
 }
 
@@ -41,7 +41,7 @@ export const LogicOfWin = ({ board, gridSize, lastPlayer, onWin, setGameOver }: 
 
       const isDraw = board.flat().every(cell => cell !== '')
       if (isDraw) {
-        onWin('draw' as any) 
+        onWin(null) 
         setGameOver(true)
       }
     }
